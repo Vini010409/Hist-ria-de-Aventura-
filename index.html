@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&display=swap" rel="stylesheet">
+    <title>A Busca pelo Amuleto do Sol</title>
+</head>
+<body>
+    <main>
+        <!-- Passo inicial -->
+        <div class="passo ativo" id="passo-0">
+            <img src="img/inicio-amuleto.png" alt="Mapa antigo sobre o Amuleto do Sol">
+            <p>Você descobre um pergaminho antigo falando sobre o **Amuleto do Sol**, um artefato que traz equilíbrio e prosperidade para quem o encontra. A jornada começa escolhendo um ponto de partida. Onde você começará?</p>
+            <button class="btn-proximo" data-proximo="1">Salvador</button>
+            <button class="btn-proximo" data-proximo="2">Belo Horizonte</button>
+        </div>
+
+        <!-- Passo 1: Salvador -->
+        <div class="passo" id="passo-1">
+            <p>Em Salvador, você começa no Pelourinho, onde descobre uma inscrição misteriosa em uma das casas coloniais. A inscrição fala sobre uma pista na Ilha de Boipeba. Você decide:</p>
+            <button class="btn-proximo" data-proximo="3">Viajar para Ilha de Boipeba</button>
+            <button class="btn-proximo" data-proximo="4">Procurar mais pistas em Salvador</button>
+        </div>
+
+        <!-- Passo 2: Belo Horizonte -->
+        <div class="passo" id="passo-2">
+            <p>Em Belo Horizonte, você encontra um mapa antigo no Mercado Central que fala sobre uma pista escondida em Ouro Preto, uma cidade histórica. Você decide:</p>
+            <button class="btn-proximo" data-proximo="5">Viajar para Ouro Preto</button>
+            <button class="btn-proximo" data-proximo="6">Explorar mais em Belo Horizonte</button>
+        </div>
+
+        <!-- Passo 3: Ilha de Boipeba -->
+        <div class="passo" id="passo-3">
+            <p>Na Ilha de Boipeba, você encontra um pescador que lhe conta sobre uma caverna secreta, onde encontra uma pista que leva ao Deserto do Jalapão.</p>
+            <button class="btn-proximo" data-proximo="7">Ir para o Deserto do Jalapão</button>
+        </div>
+
+        <!-- Passo 4: Salvador -->
+        <div class="passo" id="passo-4">
+            <p>Procurando mais em Salvador, você descobre que a próxima pista está em uma cidade histórica: Ouro Preto.</p>
+            <button class="btn-proximo" data-proximo="5">Viajar para Ouro Preto</button>
+        </div>
+
+        <!-- Passo 5: Ouro Preto -->
+        <div class="passo" id="passo-5">
+            <p>Em Ouro Preto, você encontra um livro raro em uma biblioteca que fala sobre o Amuleto do Sol estar escondido no Parque Nacional da Serra do Cipó.</p>
+            <button class="btn-proximo" data-proximo="8">Ir para a Serra do Cipó</button>
+        </div>
+
+        <!-- Passo 6: Belo Horizonte -->
+        <div class="passo" id="passo-6">
+            <p>Explorando mais em Belo Horizonte, você descobre uma referência ao Deserto do Jalapão, onde dizem estar o Amuleto do Sol.</p>
+            <button class="btn-proximo" data-proximo="7">Ir para o Deserto do Jalapão</button>
+        </div>
+
+        <!-- Passo 7: Deserto do Jalapão -->
+        <div class="passo" id="passo-7">
+            <p>No Deserto do Jalapão, você segue um mapa e encontra um fragmento dourado que brilha intensamente. Ele aponta para o destino final: o Monte Roraima.</p>
+            <button class="btn-proximo" data-proximo="9">Viajar para o Monte Roraima</button>
+        </div>
+
+        <!-- Passo 8: Serra do Cipó -->
+        <div class="passo" id="passo-8">
+            <p>Na Serra do Cipó, você encontra inscrições antigas em uma cachoeira. Elas indicam que o Amuleto do Sol está no Monte Roraima.</p>
+            <button class="btn-proximo" data-proximo="9">Seguir para o Monte Roraima</button>
+        </div>
+
+        <!-- Passo 9: Monte Roraima -->
+        <div class="passo" id="passo-9">
+            <p>Após uma longa subida ao Monte Roraima, você encontra o **Amuleto do Sol**, reluzindo sob a luz do amanhecer. Ele parece pulsar com energia, simbolizando equilíbrio e harmonia.</p>
+            <button onclick="reiniciar()">Reiniciar Aventura</button>
+        </div>
+    </main>
+    <script>
+        document.querySelectorAll('.btn-proximo').forEach(button => {
+            button.addEventListener('click', function () {
+                const passoAtual = this.closest('.passo');
+                const proximoPasso = document.getElementById(`passo-${this.dataset.proximo}`);
+                
+                passoAtual.classList.remove('ativo');
+                proximoPasso.classList.add('ativo');
+            });
+        });
+
+        function reiniciar() {
+            document.querySelectorAll('.passo').forEach(passo => passo.classList.remove('ativo'));
+            document.getElementById('passo-0').classList.add('ativo');
+        }
+    </script>
+</body>
+</html>
